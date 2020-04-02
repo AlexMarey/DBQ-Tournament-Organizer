@@ -66,5 +66,5 @@ client.on("message", message => {
     message.reply("There was an error trying to execute that command!");
   }
 });
-// client.login("Njk1MDUyMjQ3NjE2NDU0NjU3.XoUj6w.vBj1cN_DvLpq21SPnrWwVmJnNU4");
+
 client.login(process.env.DISCORD_TOKEN);
