@@ -1,10 +1,15 @@
 const fs = require("fs");
 const Discord = require("discord.js");
-const { discordToken } = require("./token.json");
 const { prefix } = require("./config.json");
 
 // Load environment variables 
-require("dotenv").load();
+require("dotenv").config();
+
+// Check for API Tokens
+if(process.env.DISCORD_TOKEN == undefined) {
+  console.log("No Discord Token available"); 
+  return;
+}
 
 // Create a discord client and a collection for the commands
 const client = new Discord.Client();
@@ -61,5 +66,5 @@ client.on("message", message => {
     message.reply("There was an error trying to execute that command!");
   }
 });
-
-client.login(discordToken);
+// client.login("Njk1MDUyMjQ3NjE2NDU0NjU3.XoUj6w.vBj1cN_DvLpq21SPnrWwVmJnNU4");
+client.login(process.env.DISCORD_TOKEN);
