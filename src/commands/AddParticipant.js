@@ -1,0 +1,27 @@
+const challonge = require('../utilities/postData');
+
+module.exports = {
+    name: "sign-up",
+    description: "",
+    args: true,
+    usage: "<name>",
+    help: "",
+    execute(message, args) {
+        const challonge_url = `https://${process.env.CHALLONGE_USERNAME}:${process.env.CHALLONGE_TOKEN}@api.challonge.com/v1/tournaments/${tournamentID}/participants.json`
+
+        let name = args.join(' ');
+        var participant = {
+            "name": name
+        }
+
+        challonge.postData(challonge_url, participant).then((res) => {
+            if(res.status == 200) {
+                message.channel.send(`${name} has signed up!`);
+            } else {
+                message.channel.send(`Something went wrong, you should let Hondo know.`);
+            }
+        });
+
+        return;
+    }
+};

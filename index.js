@@ -11,6 +11,9 @@ if(process.env.DISCORD_TOKEN == undefined) {
   return;
 }
 
+// Create my state
+var tournamentId = "";
+
 // Create a discord client and a collection for the commands
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
