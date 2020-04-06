@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 const { prefix } = require("./config.json");
 
 // Load environment variables 
-require("dotenv").config();
+// require("dotenv").config();
 
 // Check for API Tokens
 if(process.env.DISCORD_TOKEN == undefined) {
