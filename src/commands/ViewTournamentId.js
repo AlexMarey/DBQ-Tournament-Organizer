@@ -1,12 +1,10 @@
 module.exports = {
     name: "view-id",
-    description: "",
+    description: "View the current tournament ID that people are signing up for.",
     args: false,
     usage: "",
-    help: "",
     execute(message) {
       message.channel.send(`The current id is "${tournamentID}".`);
-      return;
     }
   };
   
