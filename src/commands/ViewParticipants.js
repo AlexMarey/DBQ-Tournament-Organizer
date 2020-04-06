@@ -8,8 +8,6 @@ module.exports = {
   usage: "",
   execute(message, args) {
     const challonge_url = `https://${process.env.CHALLONGE_USERNAME}:${process.env.CHALLONGE_TOKEN}@api.challonge.com/v1/tournaments/${tournamentID}/participants.json`
-    // const challonge_url =
-    //   "https://CrashCourse:JBHC0bU0ofvtIBafnurQUCPPgMK2GBRc5mPivfZB@api.challonge.com/v1/tournaments/dcoff/participants.json";
 
     try {
       utilities.getData(challonge_url).then(res => {
