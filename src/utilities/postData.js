@@ -9,10 +9,10 @@ exports.postData = async (url = '', data = {}) => {
       },
       body: JSON.stringify(data)
     });
-    return await {
-      status: response.status,
-      body: response.json()
+    if (response.status!=200) {
+      throw `Received status code ${response.status}. Please consult with Crash or Hondo.`;
     }
+    return await response.json()
     } catch (error) {
       console.log(error);
     }
