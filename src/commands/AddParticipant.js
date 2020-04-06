@@ -1,4 +1,4 @@
-const challonge = require('../utilities/postData');
+const utilities = require('../utilities/postData');
 
 module.exports = {
     name: "sign-up",
@@ -9,12 +9,11 @@ module.exports = {
     execute(message, args) {
         const challonge_url = `https://${process.env.CHALLONGE_USERNAME}:${process.env.CHALLONGE_TOKEN}@api.challonge.com/v1/tournaments/${tournamentID}/participants.json`
 
-        let name = args.join(' ');
         var participant = {
-            "name": name
+            "name": args.join(' ')
         }
 
-        challonge.postData(challonge_url, participant).then((res) => {
+        utilities.postData(challonge_url, participant).then((res) => {
             if(res.status == 200) {
                 message.channel.send(`${name} has signed up!`);
             } else {

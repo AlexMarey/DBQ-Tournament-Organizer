@@ -2,7 +2,6 @@ const fetch = require('node-fetch');
 
 exports.postData = async (url = '', data = {}) => {
   try {
-    console.log(data);
     const response = await fetch(url, {
       method: 'POST',
       headers: {
