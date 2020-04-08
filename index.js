@@ -63,7 +63,12 @@ client.on("message", message => {
 
   try {
     console.log(`Command: ${command.name}`);
-    command.execute(message, args);
+    if (command.name="help") {
+      command.execute(message, args, client.commands);
+    } else {
+      command.execute(message, args);
+    }
+
   } catch (error) {
     console.error(error);
     message.reply("There was an error trying to execute that command!");
