@@ -2,7 +2,7 @@ module.exports = {
     name: "help",
     description: "List all available commands or gives specific help for one command",
     args: false,
-    usage: ["", "<command>"],
+    usage: "",
     requiresAdmin: false,
     execute(message, args, commands = {}) {
         console.log(commands);
