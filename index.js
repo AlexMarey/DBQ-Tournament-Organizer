@@ -63,7 +63,7 @@ client.on("message", message => {
 
   try {
     console.log(`Command: ${command.name}`);
-    if (command.name="help") {
+    if (command.name=="help") {
       command.execute(message, args, client.commands);
     } else {
       command.execute(message, args);

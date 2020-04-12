@@ -6,6 +6,7 @@ module.exports = {
     "View the name of all everyone who is currently signed up to play in the tournament.",
   args: false,
   usage: "",
+  requiresAdmin: false,
   execute(message, args) {
     const challonge_url = `https://${process.env.CHALLONGE_USERNAME}:${process.env.CHALLONGE_TOKEN}@api.challonge.com/v1/tournaments/${tournamentID}/participants.json`
 

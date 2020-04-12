@@ -3,6 +3,7 @@ module.exports = {
   description: "Set the tournament ID for a challonge bracket",
   args: true,
   usage: "<id>",
+  requiresAdmin: true,
   execute(message, args) {
 
     if(args.length > 1) {

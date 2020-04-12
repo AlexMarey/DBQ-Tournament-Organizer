@@ -3,6 +3,7 @@ module.exports = {
     description: "View the current tournament ID that people are signing up for.",
     args: false,
     usage: "",
+    requiresAdmin: true,
     execute(message) {
       message.channel.send(`The current id is "${tournamentID}".`);
     }
