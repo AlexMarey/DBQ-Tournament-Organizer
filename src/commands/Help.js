@@ -4,14 +4,13 @@ module.exports = {
     args: false,
     usage: "",
     requiresAdmin: false,
-    execute(message, args, commands = {}) {
-        console.log(commands);
+    execute(message, args={}) {
         var reply = "";
         if (args.length >= 1) {
             message.channel.send(`Help command with at least 1 arg`);
         } else {            
             reply += "```Commands:\n"
-            commands.forEach(command => {
+            args.forEach(command => {
                 if(!command.requiresAdmin) {
                 reply += `  - ${command.name}`;
                 reply += command.usage !='' ? ` ${command.usage}` : ''; 

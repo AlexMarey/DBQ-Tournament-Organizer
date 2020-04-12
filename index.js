@@ -61,10 +61,16 @@ client.on("message", message => {
     return message.channel.send(reply);
   }
 
+  if (command.requiresAdmin && !message.member.hasPermission('ADMINISTRATOR')) {
+    let reply = `You need the admin role to execute that command.`
+    return message.channel.reply(reply);
+  }
+
   try {
     console.log(`Command: ${command.name}`);
+    
     if (command.name=="help") {
-      command.execute(message, args, client.commands);
+      command.execute(message, client.commands);
     } else {
       command.execute(message, args);
     }
