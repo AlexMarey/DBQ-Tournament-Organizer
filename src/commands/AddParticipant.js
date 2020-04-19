@@ -16,8 +16,8 @@ module.exports = {
     };
 
     try {
-      utilities.postData(challonge_url, participant).then(res => {
-        message.channel.send(`${name} has signed up!`);
+      utilities.postData(challonge_url, participant).then((res) => {
+        message.channel.send(`${ress.name} has signed up!`);
       });
     } catch (error) {
       message.channel.send(error);
