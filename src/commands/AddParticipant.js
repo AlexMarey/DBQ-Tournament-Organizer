@@ -17,9 +17,13 @@ module.exports = {
 
     try {
       utilities.postData(challonge_url, participant).then((res) => {
-        message.channel.send(`${ress.name} has signed up!`);
+        res.json().then((data) => {
+          console.log(data);
+          message.channel.send(`${data.participant.name} has signed up`);
+        })
       });
     } catch (error) {
+      console.log('Error in ADD PARTICIPANT');
       message.channel.send(error);
     }
 
