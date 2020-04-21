@@ -17,12 +17,17 @@ module.exports = {
 
     utilities.postData(challonge_url, participant)
       .then((data) => {
-        message.channel.send(`${data.participant.name} has signed up`);
+          console.log(`Data recieved from postData call`);
+          message.channel.send(`${data.participant.name} has signed up`);
       })
       .catch((err) => {
-        console.log("---------- ERROR: ADD_PARTICIPANT ------------");
-        console.log(err);
-        message.channel.send('An error occurred!')
+        // 500: Problem with Challonge
+        // 422: User already signed up
+        // 404: Not found within account scope
+        // 401: Unauthorized
+        console.log(`---------- ${err.response.status} ERROR in ADD_PARTICIPANT ------------`);
+        console.log(err.response.status);
+        message.channel.send(`Caught Error: ${err.response.status}!`);
       });
     return;
   }
