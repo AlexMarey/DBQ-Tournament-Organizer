@@ -15,18 +15,15 @@ module.exports = {
       name
     };
 
-    try {
-      utilities.postData(challonge_url, participant).then((res) => {
-        res.json().then((data) => {
-          console.log(data);
-          message.channel.send(`${data.participant.name} has signed up`);
-        })
+    utilities.postData(challonge_url, participant)
+      .then((data) => {
+        message.channel.send(`${data.participant.name} has signed up`);
+      })
+      .catch((err) => {
+        console.log("---------- ERROR: ADD_PARTICIPANT ------------");
+        console.log(err);
+        message.channel.send('An error occurred!')
       });
-    } catch (error) {
-      console.log('Error in ADD PARTICIPANT');
-      message.channel.send(error);
-    }
-
     return;
   }
 };
