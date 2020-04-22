@@ -52,7 +52,7 @@ client.on("message", message => {
 
   // Check if the command requires arguments and if there are any
   if (command.args && !args.length) {
-    let reply = `You didn't provide any arguments, ${message.auther}!`;
+    let reply = `You didn't provide any arguments, ${message.author}!`;
 
     if (command.usage) {
       reply += `\nThe proper usage is: \`${prefix}${command.name} ${command.usage}\``;
