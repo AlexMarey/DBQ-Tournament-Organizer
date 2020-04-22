@@ -21,13 +21,21 @@ module.exports = {
           message.channel.send(`${data.participant.name} has signed up`);
       })
       .catch((err) => {
-        // 500: Problem with Challonge
-        // 422: User already signed up
-        // 404: Not found within account scope
-        // 401: Unauthorized
+        let status = err.response.status;
+        if(status >= 500 && status < 600) {
+          // 500: Problem with Challonge
+          message.reply('There\'s a problem with Challonge right now. Try again later.');
+        } else if (status===422) {
+          // 422: User already signed up
+          message.reply('That player has already signed up!');
+        } else if (status===401) {
+          // 401: Unauthorized
+          message.reply('I\'m not authorized to do that.');
+        } else {
+          message.reply('There was an error with your request. Try again later.');
+        }
         console.log(`---------- ${err.response.status} ERROR in ADD_PARTICIPANT ------------`);
-        console.log(err.response.status);
-        message.channel.send(`Caught Error: ${err.response.status}!`);
+        console.log(`Caught Error: ${err.response.status}!`);
       });
     return;
   }
