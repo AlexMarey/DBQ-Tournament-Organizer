@@ -1,4 +1,5 @@
-const utilities = require("../utilities/postData");
+// const utilities = require("../utilities/postData");
+const utilities = require("../utilities/challongeApi");
 
 module.exports = {
   name: "sign-up",
@@ -15,14 +16,6 @@ module.exports = {
       name
     };
 
-    try {
-      utilities.postData(challonge_url, participant).then(res => {
-        message.channel.send(`${name} has signed up!`);
-      });
-    } catch (error) {
-      message.channel.send(error);
-    }
-
-    return;
+    return utilities.addParticipantToTournament(challonge_url, participant, message);
   }
 };
