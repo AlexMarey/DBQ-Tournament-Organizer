@@ -5,10 +5,10 @@ module.exports = {
   args: false,
   usage: "",
   requiresAdmin: false,
-  execute(message, args = {}) {
+  execute(message) {
     var reply = "";
     reply += "```Commands:\n";
-    
+
     args.forEach((command) => {
       if (
         command.requiresAdmin &&
