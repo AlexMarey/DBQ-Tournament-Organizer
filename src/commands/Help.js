@@ -11,10 +11,14 @@ module.exports = {
         } else {            
             reply += "```Commands:\n"
             args.forEach(command => {
-                if(!command.requiresAdmin) {
-                reply += `  - ${command.name}`;
-                reply += command.usage !='' ? ` ${command.usage}` : ''; 
-                reply += `: ${command.description} \n`;
+                if(command.requiresAdmin && message.member.hasPermission('ADMINISTRATOR')){
+                    reply += `  - ${command.name}`;
+                    reply += command.usage !='' ? ` ${command.usage}` : ''; 
+                    reply += `: ${command.description} \n`;
+                } else {
+                    reply += `  - ${command.name}`;
+                    reply += command.usage !='' ? ` ${command.usage}` : ''; 
+                    reply += `: ${command.description} \n`;
             }});
             reply += "```"
         }
