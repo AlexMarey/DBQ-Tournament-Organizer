@@ -12,16 +12,19 @@ module.exports = {
             reply += "```Commands:\n"
             args.forEach(command => {
                 if(command.requiresAdmin && message.member.hasPermission('ADMINISTRATOR')){
-                    reply += `  - ${command.name}`;
-                    reply += command.usage !='' ? ` ${command.usage}` : ''; 
-                    reply += `: ${command.description} \n`;
+                    reply += formatReply(command);
                 } else {
-                    reply += `  - ${command.name}`;
-                    reply += command.usage !='' ? ` ${command.usage}` : ''; 
-                    reply += `: ${command.description} \n`;
+                    reply += formatReply(command);
             }});
             reply += "```"
         }
         message.channel.send(reply);
     }
 };
+
+function formatReply(command) {
+    let reply = `  - ${command.name}`;
+    reply += command.usage !='' ? ` ${command.usage}` : ''; 
+    reply += `: ${command.description} \n`;
+    return reply;
+}
