@@ -23,7 +23,5 @@ module.exports = {
         "There was an error with the connection. Please try again later."
       );
     }
-
-    return;
   }
 };

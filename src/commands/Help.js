@@ -5,11 +5,11 @@ module.exports = {
   args: false,
   usage: "",
   requiresAdmin: false,
-  execute(message) {
+  execute(message, commands={}) {
     var reply = "";
     reply += "```Commands:\n";
 
-    args.forEach((command) => {
+    commands.forEach((command) => {
       if (
         command.requiresAdmin &&
         message.member.hasPermission("ADMINISTRATOR")

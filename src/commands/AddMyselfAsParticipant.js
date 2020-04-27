@@ -8,7 +8,7 @@ module.exports = {
   args: false,
   usage: "",
   requiresAdmin: false,
-  execute(message, args) {
+  execute(message) {
     const challonge_url = `https://${process.env.CHALLONGE_USERNAME}:${process.env.CHALLONGE_TOKEN}@api.challonge.com/v1/tournaments/${tournamentID}/participants.json`;
 
     var username = message.member.user.username;

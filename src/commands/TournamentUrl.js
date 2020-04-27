@@ -6,7 +6,6 @@ module.exports = {
     requiresAdmin: false,
     execute(message) {
       message.channel.send(`https://www.challonge.com/${tournamentID}`);
-      return;
     }
   };
   

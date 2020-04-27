@@ -2,17 +2,23 @@ const fs = require("fs");
 const Discord = require("discord.js");
 const { prefix } = require("./config.json");
 
-// Load environment variables 
+// Load environment variables
 require("dotenv").config();
 
 // Check for API Tokens
-if(process.env.DISCORD_TOKEN == undefined) {
-  console.log("No Discord Token available"); 
+if (process.env.DISCORD_TOKEN == undefined) {
+  console.log("No Discord Token available");
   return;
 }
 
 // Create my state
-var tournamentId = "";
+var state = {
+  tournamentId: "",
+  participants: [],
+};
+console.log(state);
+
+var tournamentId = '';
 
 // Create a discord client and a collection for the commands
 const client = new Discord.Client();
@@ -21,7 +27,7 @@ client.commands = new Discord.Collection();
 // Find all command files
 const commandFiles = fs
   .readdirSync("./src/commands")
-  .filter(file => file.endsWith(".js"));
+  .filter((file) => file.endsWith(".js"));
 
 // Store each command in the client command collections
 for (const file of commandFiles) {
@@ -33,7 +39,7 @@ client.once("ready", () => {
   console.log("I'm Ready, I'm Ready, I'm Ready!");
 });
 
-client.on("message", message => {
+client.on("message", (message) => {
   // Return if the message does not start with the prefix or comes from the bot
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -60,20 +66,19 @@ client.on("message", message => {
     return message.channel.send(reply);
   }
 
-  if (command.requiresAdmin && !message.member.hasPermission('ADMINISTRATOR')) {
-    let reply = `You need the admin role to execute that command.`
+  if (command.requiresAdmin && !message.member.hasPermission("ADMINISTRATOR")) {
+    let reply = `You need the admin role to execute that command.`;
     return message.channel.reply(reply);
   }
 
   try {
     console.log(`Command: ${command.name}`);
-    
-    if (command.name=="help") {
+
+    if (command.name == "help") {
       command.execute(message, client.commands);
     } else {
       command.execute(message, args);
     }
-
   } catch (error) {
     console.error(error);
     message.reply("There was an error trying to execute that command!");
