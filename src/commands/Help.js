@@ -1,3 +1,5 @@
+const { prefix } = require('../../config.json');
+
 module.exports = {
   name: "help",
   description:
@@ -19,14 +21,14 @@ module.exports = {
         reply += formatReply(command);
       }
     });
-    reply += "```";
+    reply += `\nNote: all commands must be prefixed with '${prefix}'.` + '\n```';
 
     message.channel.send(reply);
   },
 };
 
 function formatReply(command) {
-  let reply = `  - ${command.name}`;
+  let reply = `  ${prefix}${command.name}`;
   reply += command.usage != "" ? ` ${command.usage}` : "";
   reply += `: ${command.description} \n`;
   return reply;
