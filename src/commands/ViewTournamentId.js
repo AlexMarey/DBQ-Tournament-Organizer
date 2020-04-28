@@ -5,7 +5,12 @@ module.exports = {
     usage: "",
     requiresAdmin: true,
     execute(message) {
-      message.channel.send(`The current id is "${tournamentID}".`);
+      try{
+        message.channel.send(`The current id is "${tournamentID}".`);
+      } catch (error) {
+        message.channel.send('A tournmanet id hasn\'t been set yet.');
+        console.log(error);
+      }
     }
   };
   
