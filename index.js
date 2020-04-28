@@ -12,11 +12,11 @@ if (process.env.DISCORD_TOKEN == undefined) {
 }
 
 // Create my state
-var state = {
-  tournamentId: "",
-  participants: [],
-};
-console.log(state);
+// var state = {
+//   tournamentId: "",
+//   participants: [],
+// };
+// console.log(state);
 
 var tournamentId = '';
 
