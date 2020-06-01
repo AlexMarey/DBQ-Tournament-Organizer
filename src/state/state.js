@@ -3,10 +3,13 @@ module.exports = {
         tournamentId: '',
         players: []
     },
-    getState() {
-        return this.state;
+    setTournamentId(id) {
+        this.state = {
+            ...this.state,
+            tournamentId: id,
+        };
     },
-    setState(newState) {
-        this.state = newState;
-    }
+    async getTournamentId() {
+        return this.state.tournamentId;
+    },
 }
