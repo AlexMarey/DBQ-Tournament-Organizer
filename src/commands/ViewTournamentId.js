@@ -7,8 +7,8 @@ module.exports = {
     usage: "",
     requiresAdmin: true,
     execute(message) {
-      let id = await state.getTournamentId();
-      
+      let id = state.getTournamentId();
+      // need to wait on id before proceding. It's possible that we hit the if block before the call finishes
       let reply = "";
       if(id) {
         reply = `The current id is "${id}".`;

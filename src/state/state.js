@@ -9,7 +9,7 @@ module.exports = {
             tournamentId: id,
         };
     },
-    async getTournamentId() {
+    getTournamentId() {
         return this.state.tournamentId;
     },
 }
