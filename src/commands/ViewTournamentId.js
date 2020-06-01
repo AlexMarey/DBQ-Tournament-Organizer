@@ -7,16 +7,17 @@ module.exports = {
     usage: "",
     requiresAdmin: true,
     execute(message) {
-      let id = state.getTournamentId();
-      // need to wait on id before proceding. It's possible that we hit the if block before the call finishes
-      let reply = "";
-      if(id) {
-        reply = `The current id is "${id}".`;
-      } else {
-        reply = 'A tournament Id has not been set yet.';
-      }
+      state.getTournamentId( function(id) {
+        let reply = "";
+        
+        if(id) {
+          reply = `The current id is '${id}'.`;
+        } else {
+          reply = 'A tournament Id has not been set yet.';
+        }
 
-      message.channel.send(reply);
+        message.channel.send(reply);
+      });
     }
   };
   
