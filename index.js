@@ -18,7 +18,7 @@ if (process.env.DISCORD_TOKEN == undefined) {
 // };
 // console.log(state);
 
-var tournamentId = '';
+// var tournamentId = '';
 
 // Create a discord client and a collection for the commands
 const client = new Discord.Client();

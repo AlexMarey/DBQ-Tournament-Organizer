@@ -1,3 +1,5 @@
+const state = require('../state/state');
+
 module.exports = {
     name: "view-id",
     description: "View the current tournament ID that people are signing up for.",
@@ -5,12 +7,17 @@ module.exports = {
     usage: "",
     requiresAdmin: true,
     execute(message) {
-      try{
-        message.channel.send(`The current id is "${tournamentID}".`);
-      } catch (error) {
-        message.channel.send('A tournmanet id hasn\'t been set yet.');
-        console.log(error);
-      }
+      state.getTournamentId( function(id) {
+        let reply = "";
+        
+        if(id) {
+          reply = `The current id is '${id}'.`;
+        } else {
+          reply = 'A tournament Id has not been set yet.';
+        }
+
+        message.channel.send(reply);
+      });
     }
   };
   
